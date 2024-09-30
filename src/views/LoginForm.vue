@@ -15,7 +15,17 @@ const signupPassword = ref('')
 const error = ref(null)
 // const signupConfirmPassword = ref('')
 
-const handleSubmitLogin = () => {}
+const handleSubmitLogin = async () => {
+  try {
+    await store.dispatch('login', { email: loginEmail.value, password: loginPassword.value })
+    router.push('/home')
+  } catch (err) {
+    error.value = err.message
+  }
+
+  loginEmail.value = ''
+  loginPassword.value = ''
+}
 
 const handleSubmitSignup = async () => {
   try {
@@ -24,6 +34,9 @@ const handleSubmitSignup = async () => {
   } catch (err) {
     error.value = err.message
   }
+
+  signupEmail.value = ''
+  signupPassword.value = ''
 }
 </script>
 
