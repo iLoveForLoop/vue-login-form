@@ -19,6 +19,7 @@ const handleSubmitLogin = async () => {
   try {
     await store.dispatch('login', { email: loginEmail.value, password: loginPassword.value })
     router.push('/home')
+    console.log(store.state.user.email)
   } catch (err) {
     error.value = err.message
   }
@@ -42,7 +43,7 @@ const handleSubmitSignup = async () => {
 
 <template>
   <!--LOG IN-->
-  <div class="container align-content-center p-5" style="height: 100vh">
+  <div class="container align-content-center p-5 h-100">
     <div class="row bg-body-secondary p-5">
       <div class="col-6 p-5 bg-dark text-light">
         <h1 class="text-center">LOG IN</h1>

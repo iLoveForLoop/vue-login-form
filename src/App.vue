@@ -1,22 +1,13 @@
 <script setup>
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+import NavbarVue from './components/Navbar.vue'
 </script>
 
 <template>
-  <!-- <nav class="navbar bg-body-secondary text-dark m-auto d-flex justify-between">
-    <div class="d-flex">
-      <div>
-        <router-link class="navbar-brand" to="/">Home</router-link>
-      </div>
-      <div>
-        <router-link class="navbar-brand" to="/about">About</router-link>
-      </div>
-    </div>
-
-    <div>
-      <router-link to="/login"><button class="btn btn-info">Logout</button></router-link>
-    </div>
-  </nav> -->
-
+  <NavbarVue v-if="store.state.user" />
   <RouterView />
 </template>
 
