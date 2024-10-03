@@ -8,6 +8,7 @@ const router = useRouter()
 const error = ref(null)
 
 const currentUser = store.state.user.email
+const isThereUser = store.state.authIsReady
 
 const logout = async () => {
   try {
@@ -20,20 +21,24 @@ const logout = async () => {
 </script>
 
 <template>
-  <nav class="navbar bg-body-secondary text-dark m-auto d-flex justify-between px-5">
-    <div class="d-flex">
-      <div>
-        <router-link class="navbar-brand" to="/home">Home</router-link>
+  <template v-if="isThereUser">
+    <nav class="navbar bg-body-secondary text-dark m-auto d-flex justify-between px-5">
+      <div class="d-flex">
+        <div>
+          <router-link class="navbar-brand" to="/home">Home</router-link>
+        </div>
+        <div>
+          <router-link class="navbar-brand" to="/about">About</router-link>
+        </div>
       </div>
-      <div>
-        <router-link class="navbar-brand" to="/about">About</router-link>
+      <div class="d-flex align-items-center gap-3">
+        <div>{{ currentUser }}</div>
+        <router-link to="/"
+          ><button class="btn btn-info" @click="logout">Logout</button></router-link
+        >
       </div>
-    </div>
-    <div class="d-flex align-items-center gap-3">
-      <div>{{ currentUser }}</div>
-      <router-link to="/"><button class="btn btn-info" @click="logout">Logout</button></router-link>
-    </div>
-  </nav>
+    </nav>
+  </template>
 </template>
 
 

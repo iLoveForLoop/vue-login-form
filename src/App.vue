@@ -1,9 +1,9 @@
 <script setup>
 import { useStore } from 'vuex'
+import NavbarVue from './components/Navbar.vue'
+import { computed, ref } from 'vue'
 
 const store = useStore()
-
-import NavbarVue from './components/Navbar.vue'
 </script>
 
 <template>
